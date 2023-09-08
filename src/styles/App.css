@@ -1,0 +1,18 @@
+* {
+	all: unset;
+	display: revert;
+	list-style: none;
+}
+
+html,
+body {
+	height: 100%;
+}
+
+#root {
+	padding: 20px 50px;
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	align-items: center;
+}
