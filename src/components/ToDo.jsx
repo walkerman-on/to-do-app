@@ -1,5 +1,15 @@
 import React, { useState } from "react"
-import { Input, Button, Space, Divider, List, Checkbox, message } from "antd"
+import {
+	Input,
+	Button,
+	Space,
+	Divider,
+	List,
+	Checkbox,
+	message,
+	Result,
+	Radio,
+} from "antd"
 
 const ToDo = () => {
 	const [toDoInput, setToDoInput] = useState({
@@ -9,10 +19,10 @@ const ToDo = () => {
 	})
 
 	const [toDoItems, setToDoItems] = useState([
-		{ text: "Сходить за покупками", id: 1 },
-		{ text: "Убрать за котом", id: 2 },
-		{ text: "Порешать задчи с CodeWars", id: 3 },
-		{ text: "Подготовить сдачу лабораторной", id: 4 },
+		{ text: "Сходить за покупками", id: 0 },
+		{ text: "Убрать за котом", id: 1 },
+		{ text: "Порешать задчи с CodeWars", id: 2 },
+		{ text: "Подготовить сдачу лабораторной", id: 3 },
 	])
 
 	const pushToDo = (e) => {
@@ -21,18 +31,23 @@ const ToDo = () => {
 		setToDoItems([...toDoItems, { text: toDoInput.text, id: Date.now() }])
 		console.log([...toDoItems, { text: toDoInput.text, id: Date.now() }])
 		messageApi.open({
-			type: "success",
+			type: "loading",
 			content: "Добавлено в список",
 			duration: 1,
 		})
 	}
 
-	const deleteToDo = (e) => {
-		e.preventDefault()
-		// setToDoItems(toDoItems.filter((item, id) => item.id === id))
-		// console.log(setToDoItems(toDoItems.filter((item, id) => item.id !== id)))
-		console.log(toDoItems.filter((item, id) => item.id !== id))
-		// console.log(...toDoItems.map((item) => item.id))
+	const deleteToDo = (toDo) => {
+		messageApi
+			.open({
+				type: "success",
+				content: "Удаляем",
+				duration: 1,
+			})
+			.then(() => message.success("Удалено", 2.5))
+		setTimeout(() => {
+			setToDoItems(toDoItems.filter((item) => item.id !== toDo.id))
+		}, 1000)
 	}
 
 	const [messageApi, contextHolder] = message.useMessage()
@@ -74,31 +89,30 @@ const ToDo = () => {
 				</Button>
 			</Space.Compact>
 			<Divider orientation="center">To Do</Divider>
-			{/* <List
-				size="medium"
-				bordered
-				dataSource={toDoItems}
-				renderItem={(item) => (
-					<List.Item style={{ fontSize: "15px" }}>
-						<Space wrap size={10}>
-							<Checkbox></Checkbox>
-							{item}
-						</Space>
-					</List.Item>
-				)}
-			/> */}
 			<List size="medium" bordered>
-				{toDoItems.map((item) => {
-					return (
-						<List.Item style={{ fontSize: "15px" }} id={item.id} key={item.id}>
-							<Space wrap size={10}>
-								<Checkbox></Checkbox>
-								<Button onClick={deleteToDo}>удалить</Button>
-								{item.text} {item.id}
-							</Space>
-						</List.Item>
-					)
-				})}
+				{toDoItems.length === 0 ? (
+					<Result
+						status="success"
+						title="На сегодня дел нет, ты молодец!"
+						subTitle="Чтобы добавить новое напоминание, заполни поле выше и нажми отправить "
+					/>
+				) : (
+					toDoItems.map((toDo) => {
+						return (
+							<List.Item
+								style={{ fontSize: "15px" }}
+								id={toDo.id}
+								key={toDo.id}
+							>
+								<Space wrap size={10}>
+									{contextHolder}
+									<Radio onClick={() => deleteToDo(toDo)}></Radio>
+									{toDo.text}
+								</Space>
+							</List.Item>
+						)
+					})
+				)}
 			</List>
 		</div>
 	)
