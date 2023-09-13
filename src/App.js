@@ -1,16 +1,7 @@
 import "./styles/App.css"
-import ToDo from "./components/ToDo.jsx"
-import Layout from "./components/Layout.jsx"
-import ThemeProvider from "./providers/ThemeProvider"
+import ToDo from "./components/ToDo"
 
-function App() {
-	return (
-		<ThemeProvider>
-			<Layout>
-				<ToDo />
-			</Layout>
-		</ThemeProvider>
-	)
+const App = () => {
+	return <ToDo />
 }
-
 export default App

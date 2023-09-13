@@ -3,27 +3,3 @@
 	display: revert;
 	list-style: none;
 }
-
-html,
-body {
-	height: 100%;
-}
-
-body {
-	background: white;
-	/* color: black; */
-}
-
-#root {
-	padding: 20px 50px;
-	display: flex;
-	justify-content: center;
-	gap: 20px;
-	align-items: center;
-}
-
-.layout {
-	/* background: #262626; */
-	color: white;
-	height: 100vh;
-}

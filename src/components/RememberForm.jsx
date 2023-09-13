@@ -31,7 +31,7 @@ const RememberForm = ({ remember, pushRemember }) => {
 					toDoInput.text === "" ? "" : e.key === "Enter" ? pushToDo(e) : ""
 				}
 				size="small"
-				style={{ flexGrow: "10", minWidth: "400px" }}
+				style={{ flexGrow: "10" }}
 			/>
 			{contextHolder}
 			<Button

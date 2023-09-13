@@ -1,34 +1,30 @@
-import React, { useState } from "react"
-import { Input, Button, Space, Divider, message } from "antd"
-import RememberList from "./RememberList"
-import RememberForm from "./RememberForm"
+import React from "react"
+import { Layout } from "antd"
+
+import Navigation from "./Navigation"
+import Main from "./Main"
+
+const { Footer } = Layout
 
 const ToDo = () => {
-	const [toDoItems, setToDoItems] = useState([
-		{ text: "Сходить за покупками", id: 0 },
-		{ text: "Убрать за котом", id: 1 },
-		{ text: "Порешать задчи с CodeWars", id: 2 },
-		{ text: "Подготовить сдачу лабораторной", id: 3 },
-	])
-
 	return (
-		<div className="App">
-			<nav
+		<Layout
+			style={{
+				display: "flex",
+				minHeight: "100vh",
+			}}
+		>
+			<Navigation />
+			<Main />
+			<Footer
 				style={{
-					display: "flex",
-					justifyContent: "flex-end",
-					alignItems: "center",
-					paddingBottom: "25px",
+					textAlign: "center",
+					flexShrink: "0",
 				}}
 			>
-				<Button size="small" type="primary" ghost>
-					Сменить тему
-				</Button>
-			</nav>
-			<RememberForm remember={toDoItems} pushRemember={setToDoItems} />
-			<Divider orientation="center">To Do</Divider>
-			<RememberList remember={toDoItems} setRemember={setToDoItems} />
-		</div>
+				To Do App ©2023 Created by Alex Groshev
+			</Footer>
+		</Layout>
 	)
 }
 
