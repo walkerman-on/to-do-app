@@ -1,9 +1,10 @@
-import React from "react"
+import React, { useState } from "react"
 import { Reorder } from "framer-motion"
 import { Space, List, message, Result, Radio } from "antd"
 
 const ToDoList = ({ remember, setRemember }) => {
 	const [messageApi, contextHolder] = message.useMessage()
+	const [deleted, setDeleted] = useState([])
 
 	const deleteToDo = (toDo) => {
 		messageApi
@@ -16,6 +17,8 @@ const ToDoList = ({ remember, setRemember }) => {
 		setTimeout(() => {
 			setRemember(remember.filter((item) => item.id !== toDo.id))
 		}, 500)
+		// setDeleted([...deleted, remember.find((item) => item.id === toDo.id)])
+		console.log([...deleted, remember.find((item) => item.id === toDo.id)])
 	}
 
 	return (

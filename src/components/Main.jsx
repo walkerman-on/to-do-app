@@ -27,12 +27,17 @@ const Main = () => {
 			type,
 		}
 	}
+
 	const items = [
 		getItem(
 			"Мои списки",
 			"grp",
 			null,
-			[getItem("Завершенные", "1"), getItem("Срочные", "2")],
+			[
+				getItem("Все", "1"),
+				getItem("Завершенные", "2"),
+				getItem("Срочные", "3"),
+			],
 			"group"
 		),
 	]
