@@ -3,8 +3,7 @@
 This is a To Do app with various functionality.
 
 ## 👾 Demo
-
-As the functionality is added, the demo will expand.
+![Запись экрана 2023-09-19 в 17 45 27 (1)](https://github.com/walkerman-on/to-do-app/assets/82907949/2c5cb113-2714-4517-bf2b-90b266e193da)
 
 ## 💽 Installation
 Will be soon...
