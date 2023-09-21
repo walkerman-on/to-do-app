@@ -1,13 +1,10 @@
-import "./styles/App.css"
-import React, { useState } from "react"
-import { BrowserRouter, Link } from "react-router-dom"
-import { Layout } from "antd"
-import AppRouter from "./components/AppRouter"
-import Navigation from "./components/Navigation"
-import { Menu, theme } from "antd"
+import React from "react"
+import { BrowserRouter } from "react-router-dom"
+import { Layout, Menu, theme } from "antd"
+import AppRouter from "./AppRouter"
+import Navigation from "./Navigation"
 
-const { Content, Sider } = Layout
-const { Footer } = Layout
+const { Content, Sider, Footer } = Layout
 
 const ToDo = () => {
 	const onClick = (e) => {
@@ -41,6 +38,7 @@ const ToDo = () => {
 	const {
 		token: { colorBgContainer },
 	} = theme.useToken()
+
 	return (
 		<Layout
 			style={{

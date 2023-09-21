@@ -1,7 +1,5 @@
 import React, { useState } from "react"
 import { Layout, Divider } from "antd"
-import RememberForm from "../components/RememberForm"
-import RememberList from "../components/RememberList"
 import DeletedRemember from "../components/DeletedRemember"
 
 const { Content } = Layout
@@ -18,7 +16,6 @@ const Deleted = ({ deleted, setDeleted }) => {
 			}}
 		>
 			<Divider orientation="center">Сделано</Divider>
-			{/* <RememberList remember={toDoItems} setRemember={setToDoItems} /> */}
 			<DeletedRemember remember={toDoItems} setRemember={setToDoItems} />
 		</Content>
 	)
